@@ -1,5 +1,5 @@
 <?php
-function send_robux($robux,$username,$player_v,$group,$cookie){
+function send_robux($robux,$username,$player_v,$group){
 $curl56 = curl_init();
 curl_setopt($curl56, CURLOPT_SSL_VERIFYHOST, false);
 curl_setopt($curl56, CURLOPT_FOLLOWLOCATION, 1); // allow redirects 
@@ -22,8 +22,7 @@ curl_setopt_array($curl56, array(
     "Connection: keep-alive",
     "User-Agent: PostmanRuntime/7.15.2",
     "cache-control: no-cache",
-    "Content-Type: application/json",
-    "Cookie: ".$cookie
+    "Content-Type: application/json"
   ),
 ));
 
@@ -50,7 +49,6 @@ curl_setopt_array($curl, array(
   CURLOPT_POSTFIELDS => "{\r\n  \"PayoutType\": \"FixedAmount\",\r\n  \"Recipients\": [\r\n    {\r\n      \"recipientId\": ".$player_id.",\r\n      \"recipientType\": \"User\",\r\n      \"amount\": ".$robux."\r\n    }\r\n  ]\r\n}",
   CURLOPT_HTTPHEADER => array(
     "Content-Type: application/json",
-    "cookie: ".$cookie,
     "x-csrf-token: dfsd"
   ),
 ));
@@ -84,7 +82,6 @@ curl_setopt_array($curl18, array(
   CURLOPT_POSTFIELDS => "{\r\n  \"PayoutType\": \"FixedAmount\",\r\n  \"Recipients\": [\r\n    {\r\n      \"recipientId\": ".$player_id.",\r\n      \"recipientType\": \"User\",\r\n      \"amount\": ".$robux."\r\n    }\r\n  ]\r\n}",
   CURLOPT_HTTPHEADER => array(
     "Content-Type: application/json",
-    "cookie: ".$cookie,
     "x-csrf-token: ".$header[1]
   ),
 ));
